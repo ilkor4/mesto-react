@@ -1,7 +1,6 @@
 function Card(props) {
   function handleClick() {
     props.onCardClick(props.card);
-    document.querySelector('.popup_type_photo').classList.add('popup_opened');
   }
 
   return(

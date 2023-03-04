@@ -6,7 +6,7 @@ function PopupWithForm(props) {
         <form className="form" name={props.name} noValidate>
           <legend className="form__title">{props.title}</legend>
           <>{props.children} </>
-        <button className="form__save-button" type="submit">Сохранить</button>
+        <button className="form__save-button" type="submit">{props.buttonText}</button>
         </form>
       </div>
     </div>

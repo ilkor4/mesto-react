@@ -1,14 +1,14 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import {api} from '../../utils/Api.js';
 import Card from "../card/Card.js";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState();
-  const [userDescription, setUserDescription] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getProfileInfo(), api.getInitialCards()])
       .then(([profileData, cards]) => {
         setUserName(profileData.name);
@@ -35,7 +35,11 @@ function Main(props) {
       </section>
       <section aria-label="Элементы">
         <ul className="elements">
-          {cards.map(cardConfig => <Card card={cardConfig} key={cardConfig._id} onCardClick={props.onCardClick} />)}
+          {cards.map((cardConfig) => (
+          <Card card={cardConfig} key={cardConfig._id} onCardClick={props.onCardClick}
+          />
+          ))
+          }
         </ul>
       </section>
     </main>
